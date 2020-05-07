@@ -43,6 +43,8 @@ def set_fault(virtual_service_name: str, routes: List[Dict[str, str]],  # noqa: 
             destination = route["destination"]
             expected_destinations.add(
                 (destination["host"], destination["subset"]))
+    
+    print(expected_destinations)
 
     # inject a fault block into the targets
     spec = deepcopy(result["body"]["spec"]["http"])
