@@ -2,7 +2,66 @@
 
 ## [Unreleased][]
 
-[Unreleased]: https://github.com/chaostoolkit-incubator/chaostoolkit-istio/compare/0.1.4...HEAD
+[Unreleased]: https://github.com/chaostoolkit-incubator/chaostoolkit-istio/compare/0.4.1...HEAD
+
+## [0.4.1][] - 2024-04-18
+
+[0.4.1]: https://github.com/chaostoolkit-incubator/chaostoolkit-istio/compare/0.4.0...0.4.1
+
+### Changed
+
+* Publish the source alongside the wheel version for documentation purpose
+
+## [0.4.0][] - 2024-04-18
+
+[0.4.0]: https://github.com/chaostoolkit-incubator/chaostoolkit-istio/compare/0.3.0...0.4.0
+
+### Changed
+
+* Dropped `simplejson` dependency
+* Dropped `logzero` dependency
+* Moved to `ruff`
+* Moved away from `setuptools` to `pdm`
+
+## [0.3.0][] - 2023-02-27
+
+[0.3.0]: https://github.com/chaostoolkit-incubator/chaostoolkit-istio/compare/0.2.1...0.3.0
+
+### Changed
+
+- Modernize build pipeline
+
+## [0.2.1][] - 2022-09-29
+
+[0.2.1]: https://github.com/chaostoolkit-incubator/chaostoolkit-istio/compare/0.2.0...0.2.1
+
+### Changed
+
+- Relaxed pinning of logzero dependency
+- Fix development dependencies
+- Updated GitHub actions
+- Introduced pyproject.toml
+
+## [0.2.0][] - 2021-06-11
+
+[0.2.0]: https://github.com/chaostoolkit-incubator/chaostoolkit-istio/compare/0.1.5...0.2.0
+
+### Changed
+
+-   Bumped dependencies and removed the hard pinning on logzero as it was 
+    conflicting with other chaostoolkit libraries
+-   Switched from Travis to GitHub actions
+-   Made Python 3.5 support deprecated as Python 3.5 has EOL last year
+
+## [0.1.5][] - 2021-05-28
+
+[0.1.5]: https://github.com/chaostoolkit-incubator/chaostoolkit-istio/compare/0.1.4...0.1.5
+
+### Changed
+
+-   Ensure destination route without subset can be matched [#9][9]
+
+[9]: https://github.com/chaostoolkit-incubator/chaostoolkit-istio/issues/9
 
 ## [0.1.4][] - 2020-04-03
 

@@ -67,16 +67,22 @@ def test_add_fault_if_route_matches(client, get_vs):
     call_api.return_value = (content, 200, {})
     client.return_value.call_api = call_api
 
-    res = set_fault("mysvc", routes, fault)
+    res = set_fault(
+        "mysvc",
+        routes,
+        fault,
+        ns="default",
+        version="networking.istio.io/v1beta1",
+    )
     call_api.assert_called_with(
-        "/apis/networking.istio.io/v1alpha3/namespaces/default/virtualservices/mysvc",
+        "/apis/networking.istio.io/v1beta1/namespaces/default/virtualservices/mysvc",
         "PATCH",
         header_params={
             "Content-Type": "application/merge-patch+json",
             "Accept": "application/json",
         },
         body={
-            "apiVersion": "networking.istio.io/v1alpha3",
+            "apiVersion": "networking.istio.io/v1beta1",
             "kind": "VirtualService",
             "metadata": {"name": "mysvc"},
             "spec": {
@@ -174,16 +180,22 @@ def test_does_not_add_fault_if_no_route_matches(client, get_vs):
     call_api.return_value = (content, 200, {})
     client.return_value.call_api = call_api
 
-    res = set_fault("mysvc", routes, fault)
+    res = set_fault(
+        "mysvc",
+        routes,
+        fault,
+        ns="default",
+        version="networking.istio.io/v1beta1",
+    )
     call_api.assert_called_with(
-        "/apis/networking.istio.io/v1alpha3/namespaces/default/virtualservices/mysvc",
+        "/apis/networking.istio.io/v1beta1/namespaces/default/virtualservices/mysvc",
         "PATCH",
         header_params={
             "Content-Type": "application/merge-patch+json",
             "Accept": "application/json",
         },
         body={
-            "apiVersion": "networking.istio.io/v1alpha3",
+            "apiVersion": "networking.istio.io/v1beta1",
             "kind": "VirtualService",
             "metadata": {"name": "mysvc"},
             "spec": {
@@ -280,16 +292,18 @@ def test_remove_fault_if_route_matches(client, get_vs):
     call_api.return_value = (content, 200, {})
     client.return_value.call_api = call_api
 
-    res = unset_fault("mysvc", routes)
+    res = unset_fault(
+        "mysvc", routes, ns="default", version="networking.istio.io/v1beta1"
+    )
     call_api.assert_called_with(
-        "/apis/networking.istio.io/v1alpha3/namespaces/default/virtualservices/mysvc",
+        "/apis/networking.istio.io/v1beta1/namespaces/default/virtualservices/mysvc",
         "PATCH",
         header_params={
             "Content-Type": "application/merge-patch+json",
             "Accept": "application/json",
         },
         body={
-            "apiVersion": "networking.istio.io/v1alpha3",
+            "apiVersion": "networking.istio.io/v1beta1",
             "kind": "VirtualService",
             "metadata": {"name": "mysvc"},
             "spec": {
@@ -378,16 +392,23 @@ def test_add_delay_fault(client, get_vs):
     call_api.return_value = (content, 200, {})
     client.return_value.call_api = call_api
 
-    res = add_delay_fault("mysvc", "5s", routes, percentage=100.0)
+    res = add_delay_fault(
+        "mysvc",
+        "5s",
+        routes,
+        percentage=100.0,
+        ns="default",
+        version="networking.istio.io/v1beta1",
+    )
     call_api.assert_called_with(
-        "/apis/networking.istio.io/v1alpha3/namespaces/default/virtualservices/mysvc",
+        "/apis/networking.istio.io/v1beta1/namespaces/default/virtualservices/mysvc",
         "PATCH",
         header_params={
             "Content-Type": "application/merge-patch+json",
             "Accept": "application/json",
         },
         body={
-            "apiVersion": "networking.istio.io/v1alpha3",
+            "apiVersion": "networking.istio.io/v1beta1",
             "kind": "VirtualService",
             "metadata": {"name": "mysvc"},
             "spec": {
@@ -482,16 +503,23 @@ def test_add_abort_fault(client, get_vs):
     call_api.return_value = (content, 200, {})
     client.return_value.call_api = call_api
 
-    res = add_abort_fault("mysvc", 404, routes, percentage=100.0)
+    res = add_abort_fault(
+        "mysvc",
+        404,
+        routes,
+        percentage=100.0,
+        ns="default",
+        version="networking.istio.io/v1beta1",
+    )
     call_api.assert_called_with(
-        "/apis/networking.istio.io/v1alpha3/namespaces/default/virtualservices/mysvc",
+        "/apis/networking.istio.io/v1beta1/namespaces/default/virtualservices/mysvc",
         "PATCH",
         header_params={
             "Content-Type": "application/merge-patch+json",
             "Accept": "application/json",
         },
         body={
-            "apiVersion": "networking.istio.io/v1alpha3",
+            "apiVersion": "networking.istio.io/v1beta1",
             "kind": "VirtualService",
             "metadata": {"name": "mysvc"},
             "spec": {
